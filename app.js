@@ -1,10 +1,10 @@
 const STORAGE_KEY = "nutriflow-data-v2";
 
 const QUICK_TEMPLATES = [
-  { mealType: "Dorucak", name: "Jaja i tost" },
-  { mealType: "Rucak", name: "Piletina i riza" },
-  { mealType: "Vecera", name: "Juha i salata" },
-  { mealType: "Snack", name: "Jogurt i voce" },
+  { mealType: "Obrok1", name: "Jaja i tost" },
+  { mealType: "Obrok2", name: "Piletina i riza" },
+  { mealType: "Obrok3", name: "Juha i salata" },
+  { mealType: "Obrok4", name: "Jogurt i voce" },
 ];
 
 const elements = {
@@ -12,7 +12,6 @@ const elements = {
   selectedDate: document.querySelector("#selectedDate"),
   previousWeekButton: document.querySelector("#previousWeekButton"),
   nextWeekButton: document.querySelector("#nextWeekButton"),
-  weeklyStrip: document.querySelector("#weeklyStrip"),
   weekRangeLabel: document.querySelector("#weekRangeLabel"),
   weeklyBoard: document.querySelector("#weeklyBoard"),
   entriesList: document.querySelector("#entriesList"),
@@ -48,7 +47,6 @@ function bindEvents() {
   elements.previousWeekButton.addEventListener("click", () => shiftWeek(-7));
   elements.nextWeekButton.addEventListener("click", () => shiftWeek(7));
   elements.entriesList.addEventListener("click", handleEntryDelete);
-  elements.weeklyStrip.addEventListener("click", handleWeeklyDaySelect);
 }
 
 function loadState() {
@@ -105,18 +103,6 @@ function handleDateChange() {
   persistAndRender();
 }
 
-function handleWeeklyDaySelect(event) {
-  const trigger = event.target.closest("[data-date]");
-  if (!trigger) {
-    return;
-  }
-
-  const nextDate = trigger.getAttribute("data-date") || today;
-  elements.selectedDate.value = nextDate;
-  state.selectedDate = nextDate;
-  persistAndRender();
-}
-
 function handleEntryDelete(event) {
   const trigger = event.target.closest("[data-delete-id]");
   if (!trigger) {
@@ -142,34 +128,10 @@ function render() {
   const dateKey = getSelectedDate();
   const entries = getEntriesForDate(dateKey);
 
-  renderWeeklyStrip();
   renderWeeklyBoard();
   renderSummary(entries);
   renderInsights(entries);
   renderEntries(entries);
-}
-
-function renderWeeklyStrip() {
-  const weekDays = buildWeekDays(parseDateInput(getSelectedDate()));
-  elements.weekRangeLabel.textContent = `${formatShortDate(weekDays[0])} - ${formatShortDate(weekDays[6])}`;
-  elements.weeklyStrip.innerHTML = weekDays
-    .map((date) => {
-      const dateKey = toDateInputValue(date);
-      const entries = getEntriesForDate(dateKey);
-      const mealLabels = entries.slice(0, 2).map((entry) => formatMealType(entry.mealType)).join(", ");
-      const activeClass = dateKey === getSelectedDate() ? "active-day" : "";
-      const todayClass = dateKey === today ? "today-day" : "";
-
-      return `
-        <button class="day-card ${activeClass} ${todayClass}" type="button" data-date="${dateKey}">
-          <strong>${formatWeekday(date)}</strong>
-          <span>${formatShortDate(date)}</span>
-          <span>${entries.length} ${entries.length === 1 ? "obrok" : "obroka"}</span>
-          <span>${mealLabels || "Jos nema upisa"}</span>
-        </button>
-      `;
-    })
-    .join("");
 }
 
 function renderSummary(entries) {
@@ -180,8 +142,9 @@ function renderSummary(entries) {
 }
 
 function renderWeeklyBoard() {
-  const mealTypes = ["Dorucak", "Rucak", "Vecera", "Snack"];
+  const mealTypes = ["Obrok1", "Obrok2", "Obrok3", "Obrok4"];
   const weekDays = buildWeekDays(parseDateInput(getSelectedDate()));
+  elements.weekRangeLabel.textContent = `${formatShortDate(weekDays[0])} - ${formatShortDate(weekDays[6])}`;
 
   elements.weeklyBoard.innerHTML = weekDays
     .map((date) => {
@@ -223,7 +186,7 @@ function renderWeeklyBoard() {
 
 function renderInsights(entries) {
   const grouped = groupByMealType(entries);
-  const mealTypes = ["Dorucak", "Rucak", "Vecera", "Snack"];
+  const mealTypes = ["Obrok1", "Obrok2", "Obrok3", "Obrok4"];
   const cards = mealTypes.map((mealType) => {
     const mealEntries = grouped[mealType] || [];
     const preview = mealEntries.length
@@ -350,10 +313,10 @@ function formatShortDate(date) {
 
 function formatMealType(type) {
   const labels = {
-    Dorucak: "Dorucak",
-    Rucak: "Rucak",
-    Vecera: "Vecera",
-    Snack: "Snack",
+    Obrok1: "Obrok 1",
+    Obrok2: "Obrok 2",
+    Obrok3: "Obrok 3",
+    Obrok4: "Obrok 4",
   };
 
   return labels[type] || type;
