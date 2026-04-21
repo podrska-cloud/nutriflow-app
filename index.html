@@ -1,185 +1,99 @@
-<!DOCTYPE html>
-<html lang="hr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NutriFlow - Dnevnik obroka</title>
-    <meta name="theme-color" content="#f4efe6" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="NutriFlow" />
-    <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <div class="app-shell simplified-shell">
-      <aside class="sidebar">
-        <div class="brand-block">
-          <p class="eyebrow">Jednostavno pracenje dana</p>
-          <h1>NutriFlow</h1>
-          <p class="brand-copy">
-            Upisi sto je pojedeno kroz dan i posalji screenshot nutricionistu.
-          </p>
-        </div>
+          <div id="weeklyBoard" class="weekly-board"></div>
+        </section>
 
-        <section class="panel water-panel">
+        <section class="panel demo-panel">
           <div class="section-heading">
             <div>
-              <p class="section-kicker">Dan u jednoj slici</p>
-              <h2>Brzi podsjetnik</h2>
-            </div>
-          </div>
-
-          <div class="install-grid single-column">
-            <article class="install-card">
-              <strong>1. Odaberi dan</strong>
-              <p>Na vrhu biras datum ili ga promijenis kroz tjedni pregled.</p>
-            </article>
-            <article class="install-card">
-              <strong>2. Upisi obrok</strong>
-              <p>Upisi dorucak, rucak, veceru ili snack i ukratko sto je jela.</p>
-            </article>
-            <article class="install-card">
-              <strong>3. Posalji screenshot</strong>
-              <p>Na kraju dana otvori pregled i posalji screenshot nutricionistu.</p>
-            </article>
-          </div>
-        </section>
-      </aside>
-
-      <main class="main-content">
-        <section class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">Dnevni pregled</p>
-            <h2>Jednostavan dnevnik obroka bez kompliciranja s brojkama.</h2>
-            <p>
-              Fokus je na tome sto je jela kroz dan, za koji obrok i uz kratku biljesku.
-            </p>
-          </div>
-
-          <div class="hero-controls">
-            <label class="date-picker">
-              <span>Datum</span>
-              <input id="selectedDate" type="date" />
-            </label>
-          </div>
-        </section>
-
-        <section class="panel weekly-panel">
-          <div class="section-heading weekly-heading">
-            <div>
-              <p class="section-kicker">Tjedni unos</p>
-              <h2>Pregled po danima</h2>
-            </div>
-            <div class="week-nav">
-              <button class="ghost-button" id="previousWeekButton" type="button">Prosli tjedan</button>
-              <button class="ghost-button" id="nextWeekButton" type="button">Sljedeci tjedan</button>
-            </div>
-          </div>
-          <div id="weekRangeLabel" class="week-range"></div>
-          <div id="weeklyStrip" class="weekly-strip"></div>
-        </section>
-
-        <section class="panel weekly-screenshot-panel">
-          <div class="section-heading">
-            <div>
-              <p class="section-kicker">Tjedni screenshot</p>
-              <h2>Cijeli tjedan na jednom mjestu</h2>
+              <p class="section-kicker">Vizualni primjer</p>
+              <h2>Kako bi izgledao cisti pregled za slanje</h2>
             </div>
           </div>
           <p class="weekly-screenshot-copy">
-            Ovaj pregled je slozen tako da se moze slikati i poslati nutricionistu jednom tjedno.
+            Ovo je primjer kako bi izgledao pojednostavljeni tjedni screenshot bez suvisnih elemenata.
           </p>
-          <div id="weeklyBoard" class="weekly-board"></div>
+          <div class="demo-shot">
+            <div class="demo-shot-header">
+              <div>
+                <p class="demo-shot-kicker">NutriFlow weekly check-in</p>
+                <h3>Tjedni pregled obroka</h3>
+              </div>
+              <span>20.04. - 26.04.</span>
+            </div>
+            <div class="demo-shot-grid">
+              <article class="demo-day">
+                <strong>Pon</strong>
+                <span>20.04.</span>
+                <ul>
+                  <li><b>Obrok 1:</b> jaja, tost, jogurt</li>
+                  <li><b>Obrok 2:</b> piletina, riza, salata</li>
+                  <li><b>Obrok 3:</b> juha i sendvic</li>
+                  <li><b>Obrok 4:</b> banana</li>
+                </ul>
+              </article>
+              <article class="demo-day">
+                <strong>Uto</strong>
+                <span>21.04.</span>
+                <ul>
+                  <li><b>Obrok 1:</b> zobena kasa i voce</li>
+                  <li><b>Obrok 2:</b> tortilja s piletinom</li>
+                  <li><b>Obrok 3:</b> sir, rajcica, kruh</li>
+                  <li><b>Obrok 4:</b> proteinski puding</li>
+                </ul>
+              </article>
+              <article class="demo-day">
+                <strong>Sri</strong>
+                <span>22.04.</span>
+                <ul>
+                  <li><b>Obrok 1:</b> tost i namaz</li>
+                  <li><b>Obrok 2:</b> pasta bolognese</li>
+                  <li><b>Obrok 3:</b> salata s tunom</li>
+                  <li><b>Obrok 4:</b> jabuka</li>
+                </ul>
+              </article>
+              <article class="demo-day">
+                <strong>Cet</strong>
+                <span>23.04.</span>
+                <ul>
+                  <li><b>Obrok 1:</b> smoothie i krekeri</li>
+                  <li><b>Obrok 2:</b> rizoto s piletinom</li>
+                  <li><b>Obrok 3:</b> palenta i jogurt</li>
+                  <li><b>Obrok 4:</b> bademi</li>
+                </ul>
+              </article>
+              <article class="demo-day">
+                <strong>Pet</strong>
+                <span>24.04.</span>
+                <ul>
+                  <li><b>Obrok 1:</b> omlet i kruh</li>
+                  <li><b>Obrok 2:</b> cevapi i salata</li>
+                  <li><b>Obrok 3:</b> juha</li>
+                  <li><b>Obrok 4:</b> voce</li>
+                </ul>
+              </article>
+              <article class="demo-day">
+                <strong>Sub</strong>
+                <span>25.04.</span>
+                <ul>
+                  <li><b>Obrok 1:</b> burek i jogurt</li>
+                  <li><b>Obrok 2:</b> pizza</li>
+                  <li><b>Obrok 3:</b> salata</li>
+                  <li><b>Obrok 4:</b> kava i keks</li>
+                </ul>
+              </article>
+              <article class="demo-day">
+                <strong>Ned</strong>
+                <span>26.04.</span>
+                <ul>
+                  <li><b>Obrok 1:</b> palacinke</li>
+                  <li><b>Obrok 2:</b> juha, meso, krumpir</li>
+                  <li><b>Obrok 3:</b> sendvic</li>
+                  <li><b>Obrok 4:</b> cokolada</li>
+                </ul>
+              </article>
+            </div>
+          </div>
         </section>
 
         <section class="summary-grid simple-summary">
           <article class="summary-tile">
             <span>Ukupno unosa</span>
-            <strong id="summaryEntries">0</strong>
-            <p>Broj zabiljezenih obroka za odabrani dan.</p>
-          </article>
-          <article class="summary-tile">
-            <span>Zadnji obrok</span>
-            <strong id="summaryLastMeal">-</strong>
-            <p>Brzi podsjetnik sto je zadnje upisano.</p>
-          </article>
-          <article class="summary-tile">
-            <span>Dan za screenshot</span>
-            <strong id="summaryScreenshot">Spremno</strong>
-            <p>Pregled je slozen tako da ga lako mozes slikati i poslati.</p>
-          </article>
-        </section>
-
-        <section class="content-grid simple-grid">
-          <section class="panel">
-            <div class="section-heading">
-              <div>
-                <p class="section-kicker">Dodavanje obroka</p>
-                <h2>Novi unos</h2>
-              </div>
-            </div>
-
-            <div class="template-row" id="templateRow"></div>
-
-            <form id="mealForm" class="meal-form single-column-form">
-              <label>
-                <span>Vrsta obroka</span>
-                <select id="mealType" name="mealType">
-                  <option value="Dorucak">Dorucak</option>
-                  <option value="Rucak">Rucak</option>
-                  <option value="Vecera">Vecera</option>
-                  <option value="Snack">Snack</option>
-                </select>
-              </label>
-              <label>
-                <span>Sto je jela</span>
-                <input id="mealName" name="name" type="text" placeholder="npr. jaja, tost i jogurt" required />
-              </label>
-              <label>
-                <span>Vrijeme</span>
-                <input id="mealTime" name="mealTime" type="time" />
-              </label>
-              <label class="full-width">
-                <span>Biljeska</span>
-                <textarea id="mealNote" name="note" rows="3" placeholder="npr. kod kuce, vani, imala je jos salatu..."></textarea>
-              </label>
-              <button class="primary-button full-width" type="submit">Dodaj obrok</button>
-            </form>
-          </section>
-
-          <section class="panel">
-            <div class="section-heading">
-              <div>
-                <p class="section-kicker">Pomoc za pregled</p>
-                <h2>Sto nutricionist vidi</h2>
-              </div>
-            </div>
-            <div id="insightList" class="insight-list"></div>
-          </section>
-        </section>
-
-        <section class="panel table-panel screenshot-panel">
-          <div class="section-heading">
-            <div>
-              <p class="section-kicker">Dnevnik</p>
-              <h2>Danasnji obroci</h2>
-            </div>
-            <div class="list-meta">
-              <span id="entriesCount">0 unosa</span>
-            </div>
-          </div>
-
-          <div id="emptyState" class="empty-state">
-            Jos nema unosa za odabrani datum. Dodaj prvi obrok kako bi dan bio spreman za screenshot.
-          </div>
-
-          <div id="entriesList" class="entries-list"></div>
-        </section>
-      </main>
-    </div>
-
-    <script src="./app.js"></script>
-  </body>
-</html>
