@@ -1,0 +1,17 @@
+{
+  "name": "NutriFlow",
+  "short_name": "NutriFlow",
+  "description": "Dnevnik prehrane za unos obroka po danima i tjednima.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4efe6",
+  "theme_color": "#f4efe6",
+  "lang": "hr",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
