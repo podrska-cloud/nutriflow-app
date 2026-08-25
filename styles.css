@@ -164,17 +164,24 @@ label span,
   width: min(280px, 100%);
 }
 
-.week-focus-panel {
+.training-panel {
   background:
     linear-gradient(180deg, rgba(255, 250, 243, 0.96), rgba(255, 243, 230, 0.9)),
     var(--panel);
 }
 
-.week-focus-field {
-  margin-bottom: 12px;
+.training-panel-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: end;
 }
 
-.week-focus-copy {
+.training-panel-field {
+  margin: 0;
+}
+
+.training-panel-copy {
   margin: 0;
   color: var(--muted);
   line-height: 1.55;
@@ -606,7 +613,8 @@ button:hover {
   .summary-grid,
   .install-grid,
   .simple-summary,
-  .simple-grid {
+  .simple-grid,
+  .training-panel-grid {
     grid-template-columns: 1fr;
   }
 
