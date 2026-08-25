@@ -164,8 +164,20 @@ label span,
   width: min(280px, 100%);
 }
 
-.week-label {
-  width: min(220px, 100%);
+.week-focus-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 250, 243, 0.96), rgba(255, 243, 230, 0.9)),
+    var(--panel);
+}
+
+.week-focus-field {
+  margin-bottom: 12px;
+}
+
+.week-focus-copy {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
 }
 
 .summary-grid {
