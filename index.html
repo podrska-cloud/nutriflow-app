@@ -19,7 +19,7 @@
           <p class="eyebrow">Jednostavno pracenje dana</p>
           <h1>NutriFlow</h1>
           <p class="brand-copy">
-            Upisi sto je pojedeno kroz dan i posalji screenshot nutricionistu.
+            Upisi sto je pojedeno kroz dan i podijeli tjedni pregled po potrebi.
           </p>
         </div>
 
@@ -42,7 +42,7 @@
             </article>
             <article class="install-card">
               <strong>3. Posalji tjedni screenshot</strong>
-              <p>Na kraju tjedna otvori tjedni pregled i posalji screenshot nutricionistu.</p>
+              <p>Na kraju tjedna otvori tjedni pregled i posalji screenshot osobi koja prati plan.</p>
             </article>
           </div>
         </section>
@@ -63,6 +63,10 @@
               <span>Datum</span>
               <input id="selectedDate" type="date" />
             </label>
+            <label class="date-picker week-label">
+              <span>Tjedan vjezbanja</span>
+              <input id="trainingWeek" type="text" placeholder="npr. Tjedan 3" />
+            </label>
           </div>
         </section>
 
@@ -78,8 +82,9 @@
             </div>
           </div>
           <div id="weekRangeLabel" class="week-range"></div>
+          <div id="trainingWeekDisplay" class="training-week-display"></div>
           <p class="weekly-screenshot-copy">
-            Ovaj pregled je slozen tako da se moze slikati i poslati nutricionistu jednom tjedno.
+            Ovaj pregled je slozen tako da se moze slikati i podijeliti jednom tjedno.
           </p>
           <div id="weeklyBoard" class="weekly-board"></div>
         </section>
@@ -98,7 +103,7 @@
           <article class="summary-tile">
             <span>Dan za screenshot</span>
             <strong id="summaryScreenshot">Spremno</strong>
-            <p>Pregled je slozen tako da ga lako mozes slikati i poslati.</p>
+            <p>Pregled je slozen tako da ga lako mozes slikati i podijeliti.</p>
           </article>
         </section>
 
@@ -143,7 +148,7 @@
             <div class="section-heading">
               <div>
                 <p class="section-kicker">Pomoc za pregled</p>
-                <h2>Sto nutricionist vidi</h2>
+                <h2>Sto se vidi u pregledu</h2>
               </div>
             </div>
             <div id="insightList" class="insight-list"></div>

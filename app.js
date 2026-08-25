@@ -10,6 +10,8 @@ const QUICK_TEMPLATES = [
 const elements = {
   mealForm: document.querySelector("#mealForm"),
   selectedDate: document.querySelector("#selectedDate"),
+  trainingWeek: document.querySelector("#trainingWeek"),
+  trainingWeekDisplay: document.querySelector("#trainingWeekDisplay"),
   previousWeekButton: document.querySelector("#previousWeekButton"),
   nextWeekButton: document.querySelector("#nextWeekButton"),
   weekRangeLabel: document.querySelector("#weekRangeLabel"),
@@ -44,6 +46,8 @@ function boot() {
 function bindEvents() {
   elements.mealForm.addEventListener("submit", handleMealSubmit);
   elements.selectedDate.addEventListener("change", handleDateChange);
+  elements.trainingWeek.addEventListener("change", handleTrainingWeekChange);
+  elements.trainingWeek.addEventListener("blur", handleTrainingWeekChange);
   elements.previousWeekButton.addEventListener("click", () => shiftWeek(-7));
   elements.nextWeekButton.addEventListener("click", () => shiftWeek(7));
   elements.entriesList.addEventListener("click", handleEntryDelete);
@@ -53,6 +57,7 @@ function loadState() {
   const fallback = {
     selectedDate: today,
     entriesByDate: {},
+    trainingWeekByStart: {},
   };
 
   try {
@@ -65,6 +70,7 @@ function loadState() {
     return {
       selectedDate: parsed.selectedDate || today,
       entriesByDate: parsed.entriesByDate || {},
+      trainingWeekByStart: parsed.trainingWeekByStart || {},
     };
   } catch (error) {
     console.warn("Greska pri ucitavanju podataka:", error);
@@ -103,6 +109,11 @@ function handleDateChange() {
   persistAndRender();
 }
 
+function handleTrainingWeekChange() {
+  state.trainingWeekByStart[getCurrentWeekKey()] = elements.trainingWeek.value.trim();
+  persistAndRender();
+}
+
 function handleEntryDelete(event) {
   const trigger = event.target.closest("[data-delete-id]");
   if (!trigger) {
@@ -128,6 +139,7 @@ function render() {
   const dateKey = getSelectedDate();
   const entries = getEntriesForDate(dateKey);
 
+  syncTrainingWeekInput();
   renderWeeklyBoard();
   renderSummary(entries);
   renderInsights(entries);
@@ -145,6 +157,8 @@ function renderWeeklyBoard() {
   const mealTypes = ["Obrok1", "Obrok2", "Obrok3", "Obrok4"];
   const weekDays = buildWeekDays(parseDateInput(getSelectedDate()));
   elements.weekRangeLabel.textContent = `${formatShortDate(weekDays[0])} - ${formatShortDate(weekDays[6])}`;
+  const trainingWeek = getCurrentTrainingWeek();
+  elements.trainingWeekDisplay.textContent = trainingWeek ? `Tjedan vjezbanja: ${trainingWeek}` : "Tjedan vjezbanja nije upisan";
 
   elements.weeklyBoard.innerHTML = weekDays
     .map((date) => {
@@ -182,6 +196,10 @@ function renderWeeklyBoard() {
       `;
     })
     .join("");
+}
+
+function syncTrainingWeekInput() {
+  elements.trainingWeek.value = getCurrentTrainingWeek();
 }
 
 function renderInsights(entries) {
@@ -262,6 +280,14 @@ function buildWeekDays(referenceDate) {
     day.setDate(monday.getDate() + index);
     return day;
   });
+}
+
+function getCurrentWeekKey() {
+  return toDateInputValue(startOfWeek(parseDateInput(getSelectedDate())));
+}
+
+function getCurrentTrainingWeek() {
+  return state.trainingWeekByStart[getCurrentWeekKey()] || "";
 }
 
 function getSelectedDate() {
