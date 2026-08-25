@@ -187,22 +187,6 @@ label span,
   line-height: 1.55;
 }
 
-.training-panel-note {
-  margin-top: 14px;
-  padding: 14px 16px;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(69, 52, 28, 0.08);
-  background: rgba(255, 255, 255, 0.58);
-}
-
-.training-panel-note p {
-  margin: 0 0 8px;
-  line-height: 1.5;
-}
-
-.training-panel-note p:last-child {
-  margin-bottom: 0;
-}
 
 .summary-grid {
   display: grid;
